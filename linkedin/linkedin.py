@@ -179,9 +179,9 @@ class LinkedInApplication(object):
         return response.json()
 
     def get_connections(self, totals_only=None, params=None, headers=None):
-        count = '0'
+        count = '50'
         if totals_only:
-            count = '50'
+            count = '0'
         url = '%s?q=viewer&start=0&count=%s' % (ENDPOINTS.CONNECTIONS, count)
         response = self.make_request('GET', url, params=params, headers=headers)
         raise_for_error(response)
