@@ -224,22 +224,6 @@ class LinkedInApplication(object):
         raise_for_error(response)
         return response.json()
 
-    def get_connections(self, member_id=None, member_url=None, selectors=None,
-                        params=None, headers=None):
-        if member_id:
-            url = '%s/id=%s/connections' % (ENDPOINTS.PEOPLE, str(member_id))
-        elif member_url:
-            url = '%s/url=%s/connections' % (ENDPOINTS.PEOPLE,
-                                             quote_plus(member_url))
-        else:
-            url = '%s/~/connections' % ENDPOINTS.PEOPLE
-        if selectors:
-            url = '%s:(%s)' % (url, LinkedInSelector.parse(selectors))
-
-        response = self.make_request('GET', url, params=params, headers=headers)
-        raise_for_error(response)
-        return response.json()
-
     def get_memberships(self, member_id=None, member_url=None, group_id=None,
                         selectors=None, params=None, headers=None):
         if member_id:
