@@ -32,6 +32,7 @@ PERMISSIONS = enum('Permission',
 
 ENDPOINTS = enum('LinkedInURL',
                  BASE='https://api.linkedin.com/v2/me',
+                 CONNECTIONS='https://api.linkedin.com/v2/connections',
                  PEOPLE='https://api.linkedin.com/v2/people',
                  PEOPLE_SEARCH='https://api.linkedin.com/v2/people-search',
                  GROUPS='https://api.linkedin.com/v2/groups',
@@ -187,6 +188,14 @@ class LinkedInApplication(object):
         if selectors:
             url = '%s:(%s)' % (url, LinkedInSelector.parse(selectors))
 
+        response = self.make_request('GET', url, params=params, headers=headers)
+        raise_for_error(response)
+        return response.json()
+
+    def get_connections(self, totals_only=None, params=None, headers=None):
+        url = ENDPOINTS.CONNECTIONS
+        if totals_only:
+            url = '%s?%s' % (url, 'q=viewer&start=0&count=0')
         response = self.make_request('GET', url, params=params, headers=headers)
         raise_for_error(response)
         return response.json()
