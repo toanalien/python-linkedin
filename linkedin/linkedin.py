@@ -31,6 +31,7 @@ PERMISSIONS = enum('Permission',
                    MESSAGES='w_messages')
 
 ENDPOINTS = enum('LinkedInURL',
+                 BASE='https://api.linkedin.com/v2/me',
                  PEOPLE='https://api.linkedin.com/v2/people',
                  PEOPLE_SEARCH='https://api.linkedin.com/v2/people-search',
                  GROUPS='https://api.linkedin.com/v2/groups',
@@ -182,7 +183,7 @@ class LinkedInApplication(object):
         elif member_url:
             url = '%s/url=%s' % (ENDPOINTS.PEOPLE, quote_plus(member_url))
         else:
-            url = '%s/~' % ENDPOINTS.PEOPLE
+            url = '%s/' % ENDPOINTS.BASE
         if selectors:
             url = '%s:(%s)' % (url, LinkedInSelector.parse(selectors))
 
