@@ -183,7 +183,7 @@ class LinkedInApplication(object):
         elif member_url:
             url = '%s/url=%s' % (ENDPOINTS.PEOPLE, quote_plus(member_url))
         else:
-            url = '%s/' % ENDPOINTS.BASE
+            url = '%s' % ENDPOINTS.BASE
         if selectors:
             url = '%s:(%s)' % (url, LinkedInSelector.parse(selectors))
 
