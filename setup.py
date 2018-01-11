@@ -12,7 +12,7 @@ from linkedin import __version__
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
     long_description = readme.read()
 
-setup(name='python-linkedin',
+setup(name='python-linkedin-v2',
       version=__version__,
       description='Python Interface to the LinkedIn API V2',
       long_description=long_description,
@@ -34,7 +34,7 @@ setup(name='python-linkedin',
       maintainer_email='reinaldo13+github@gmail.com',
       url='https://github.com/HootsuiteLabs/python-linkedin-v2',
       license='MIT',
-      packages=['linkedin'],
+      packages=['linkedin_v2'],
       install_requires=['requests>=1.1.0', 'requests-oauthlib>=0.3'],
       zip_safe=False
 )
