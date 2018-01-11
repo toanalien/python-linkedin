@@ -5,16 +5,15 @@ import hashlib
 import random
 
 try:
-    from urllib.parse import quote, quote_plus
+    from urllib.parse import quote
 except ImportError:
-    from urllib import quote, quote_plus
+    from urllib import quote
 
 import requests
 from requests_oauthlib import OAuth1
 
-from .exceptions import LinkedInError
-from .models import AccessToken, LinkedInInvitation, LinkedInMessage
-from .utils import enum, to_utf8, raise_for_error, json, StringIO
+from .models import AccessToken
+from .utils import enum, to_utf8, raise_for_error, StringIO
 
 
 __all__ = ['LinkedInAuthentication', 'LinkedInApplication', 'PERMISSIONS']
@@ -180,9 +179,10 @@ class LinkedInApplication(object):
         return response.json()
 
     def get_connections(self, totals_only=None, params=None, headers=None):
-        url = ENDPOINTS.CONNECTIONS
+        count = '0'
         if totals_only:
-            url = '%s?%s' % (url, 'q=viewer&start=0&count=0')
+            count = '50'
+        url = '%s?q=viewer&start=0&count=%s' & (ENDPOINTS.CONNECTIONS, count)
         response = self.make_request('GET', url, params=params, headers=headers)
         raise_for_error(response)
         return response.json()
