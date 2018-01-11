@@ -35,7 +35,7 @@ Set `LINKEDIN_API_KEY` and `LINKEDIN_API_SECRET`, configure your app to redirect
 To connect to LinkedIn as a developer or just to access your own data, you don't even have to implement an OAuth 2.0 flow that involves redirects. You can simply use the 4 credentials that are provided to you in your LinkedIn appliation as part of an OAuth 1.0a flow and immediately access your data. Here's how:
 
 ```python
-from linkedin import linkedin
+from linkedin_v2 import linkedin
 
 # Define CONSUMER_KEY, CONSUMER_SECRET,  
 # USER_TOKEN, and USER_SECRET from the credentials 
@@ -71,7 +71,7 @@ You can also get those keys from [here](http://developer.linkedin.com/rest).
 LinkedIn redirects the user back to your website's URL after granting access (giving proper permissions) to your application. We call that url **RETURN URL**. Assuming your return url is **http://localhost:8000**, you can write something like this:
 
 ```python
-from linkedin import linkedin
+from linkedin_v2 import linkedin
 
 API_KEY = 'wFNJekVpDCJtRPFX812pQsJee-gt0zO4X5XmG6wcfSOSlLocxodAXNMbl0_hw3Vl'
 API_SECRET = 'daJDa6_8UcnGMw1yuq9TjoO_PMKukXMo8vEMo7Qv5J-G3SPgrAV0FqFCd0TNjQyG'
