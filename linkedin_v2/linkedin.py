@@ -171,13 +171,6 @@ class LinkedInApplication(object):
 
         return requests.request(method.upper(), url, **kw)
 
-    def get_profile(self, member_id=None, member_url=None, selectors=None,
-                    params=None, headers=None):
-        url = '%s/me' % ENDPOINTS.BASE
-        response = self.make_request('GET', url, params=params, headers=headers)
-        raise_for_error(response)
-        return response.json()
-
     def get_connections(self, totals_only=None, params=None, headers=None):
         count = '50'
         if totals_only:
@@ -186,3 +179,18 @@ class LinkedInApplication(object):
         response = self.make_request('GET', url, params=params, headers=headers)
         raise_for_error(response)
         return response.json()
+
+    def get_profile(self, member_id=None, member_url=None, selectors=None,
+                    params=None, headers=None):
+        connections = 0
+        if selectors is not None and 'num-connections' in selectors:
+            connections_response = self.get_connections(totals_only=True)
+            connections_body = connections_response.get('paging', None)
+            connections = connections_body.get('total', 0)
+        
+        url = '%s/me' % ENDPOINTS.BASE
+        response = self.make_request('GET', url, params=params, headers=headers)
+        raise_for_error(response)
+        json_response = response.json()
+        json_response.update({'numConnections': connections})
+        return json_response
