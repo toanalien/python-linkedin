@@ -21,13 +21,8 @@ __all__ = ['LinkedInAuthentication', 'LinkedInApplication', 'PERMISSIONS']
 PERMISSIONS = enum('Permission',
                    COMPANY_ADMIN='rw_company_admin',
                    BASIC_PROFILE='r_basicprofile',
-                   FULL_PROFILE='r_fullprofile',
                    EMAIL_ADDRESS='r_emailaddress',
-                   NETWORK='r_network',
-                   CONTACT_INFO='r_contactinfo',
-                   NETWORK_UPDATES='rw_nus',
-                   GROUPS='rw_groups',
-                   MESSAGES='w_messages')
+                   SHARE='w_share')
 
 ENDPOINTS = enum('LinkedInURL',
                  BASE='https://api.linkedin.com/v2',
@@ -77,8 +72,8 @@ class LinkedInAuthentication(object):
     Implements a standard OAuth 2.0 flow that involves redirection for users to
     authorize the application to access account data.
     """
-    AUTHORIZATION_URL = 'https://www.linkedin.com/uas/oauth2/authorization'
-    ACCESS_TOKEN_URL = 'https://www.linkedin.com/uas/oauth2/accessToken'
+    AUTHORIZATION_URL = 'https://www.linkedin.com/oauth/v2/authorization'
+    ACCESS_TOKEN_URL = 'https://www.linkedin.com/oauth/v2/accessToken'
 
     def __init__(self, key, secret, redirect_uri, permissions=None):
         self.key = key
