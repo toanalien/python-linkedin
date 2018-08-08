@@ -16,6 +16,12 @@ You can install **python-linkedin** library via pip:
 
     $ pip install python-linkedin
 
+Or install from source:
+
+.. code-block:: bash
+
+    $ python setup.py install
+
 Authentication
 -----------------------
 

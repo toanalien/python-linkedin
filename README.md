@@ -16,6 +16,10 @@ You can install **python-linkedin** library via pip:
 
     $ pip install python-linkedin
 
+Or install from source:
+
+    $ python setup.py install
+    
 ## Authentication
 
 The LinkedIn REST API now supports the **OAuth 2.0** protocol for authentication. This package provides a full OAuth 2.0 implementation for connecting to LinkedIn as well as an option for using an OAuth 1.0a flow that can be helpful for development purposes or just accessing your own data.
