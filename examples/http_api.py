@@ -14,7 +14,7 @@ from json import dumps
 from os import environ
 
 
-from linkedin.linkedin import LinkedInAuthentication, LinkedInApplication, PERMISSIONS
+from linkedin_v2.linkedin import LinkedInAuthentication, LinkedInApplication, PERMISSIONS
 
 PORT = 8080
 

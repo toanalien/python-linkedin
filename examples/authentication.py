@@ -1,6 +1,5 @@
-from linkedin.linkedin import (LinkedInAuthentication, LinkedInApplication,
-                               PERMISSIONS)
-
+from linkedin_v2.linkedin import (LinkedInAuthentication, LinkedInApplication,
+                                  PERMISSIONS)
 
 if __name__ == '__main__':
     API_KEY = 'wFNJekVpDCJtRPFX812pQsJee-gt0zO4X5XmG6wcfSOSlLocxodAXNMbl0_hw3Vl'
